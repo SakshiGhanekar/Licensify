@@ -23,7 +23,8 @@ const steps = [
 ]
 
 export default function HowItWorksSection() {
-    const [isHovered, setIsHovered] = useState();
+  const [isHovered, setIsHovered] = useState<string | null>(null)
+
   return (
     <section className="relative py-24 bg-gradient-to-b from-white to-indigo-50 dark:from-gray-900 dark:to-indigo-950/50 overflow-hidden transition-colors duration-500">
       {/* Background elements */}
@@ -82,54 +83,35 @@ export default function HowItWorksSection() {
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">{step.title}</h3>
                 <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
-                
-                {/* Step number */}
-                <div className="absolute -top-4 -left-4 w-8 h-8 bg-emerald-500 dark:bg-emerald-400 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                  {index + 1}
-                </div>
               </div>
-
-              {/* Arrow between steps (desktop only) */}
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M9 6L15 12L9 18"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-indigo-300 dark:text-indigo-600"
-                    />
-                  </svg>
-                </div>
-              )}
             </motion.div>
           ))}
         </div>
 
         {/* Additional CTA */}
-       <button
-              className="mx-auto flex justify-center mt-4 relative group overflow-hidden bg-gradient-to-r from-emerald-500 to-teal-500 dark:from-emerald-600 dark:to-teal-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-emerald-500/25 dark:hover:shadow-emerald-600/25 transition-all duration-300"
-              onMouseEnter={() => setIsHovered("valuation")}
-              onMouseLeave={() => setIsHovered(null)}
-            >
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                <span>Start Selling Now</span>
-                <motion.span
-                  animate={isHovered === "valuation" ? { x: 5 } : { x: 0 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  →
-                </motion.span>
-              </span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-700 dark:to-teal-700"
-                initial={{ x: "-100%" }}
-                animate={isHovered === "valuation" ? { x: 0 } : { x: "-100%" }}
-                transition={{ type: "tween", duration: 0.3 }}
-              />
-            </button>
+        <div className="flex justify-center mt-16">
+          <button
+            className="relative group overflow-hidden bg-gradient-to-r from-emerald-500 to-teal-500 dark:from-emerald-600 dark:to-teal-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-emerald-500/25 dark:hover:shadow-emerald-600/25 transition-all duration-300"
+            onMouseEnter={() => setIsHovered("valuation")}
+            onMouseLeave={() => setIsHovered(null)}
+          >
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              <span>Start Selling Now</span>
+              <motion.span
+                animate={isHovered === "valuation" ? { x: 5 } : { x: 0 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                →
+              </motion.span>
+            </span>
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-emerald-400/30 to-teal-400/30 dark:from-emerald-500/30 dark:to-teal-500/30"
+              initial={{ x: "-100%", opacity: 0 }}
+              animate={isHovered === "valuation" ? { x: "0%", opacity: 1 } : { x: "-100%", opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            />
+          </button>
+        </div>
       </div>
     </section>
   )
