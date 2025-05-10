@@ -16,12 +16,15 @@ export default function Navbar() {
   useEffect(() => {
     setMounted(true)
     
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
+    // Only run this on client side
+    if (typeof window !== 'undefined') {
+      const handleScroll = () => {
+        setScrolled(window.scrollY > 10)
+      }
+      
+      window.addEventListener('scroll', handleScroll)
+      return () => window.removeEventListener('scroll', handleScroll)
     }
-    
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const toggleMenu = () => setIsOpen(!isOpen)

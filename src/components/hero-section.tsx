@@ -8,15 +8,30 @@ export default function HeroSection() {
   const [isDarkMode, setIsDarkMode] = useState(false)
   const [isHovered, setIsHovered] = useState<string | null>(null)
   const [isMounted, setIsMounted] = useState(false)
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 })
 
   useEffect(() => {
     setIsMounted(true)
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
-    setIsDarkMode(mediaQuery.matches)
-
-    const handleChange = (e: MediaQueryListEvent) => setIsDarkMode(e.matches)
-    mediaQuery.addEventListener("change", handleChange)
-    return () => mediaQuery.removeEventListener("change", handleChange)
+    
+    // Only run this on client side
+    if (typeof window !== 'undefined') {
+      // Set initial window size
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      })
+      
+      // Optional: Add listener for window resize if needed
+      const handleResize = () => {
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight
+        })
+      }
+      
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
   const containerVariants = {
@@ -209,34 +224,42 @@ export default function HeroSection() {
 
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-gradient-to-br from-indigo-300/20 to-purple-300/20 dark:from-indigo-400/20 dark:to-purple-400/20 blur-sm"
-            style={{
-              width: Math.random() * 50 + 10,
-              height: Math.random() * 50 + 10,
-              filter: "blur(2px)",
-            }}
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              scale: Math.random() * 0.5 + 0.5,
-              opacity: 0,
-            }}
-            animate={{
-              x: [null, Math.random() * window.innerWidth],
-              y: [null, Math.random() * window.innerHeight],
-              opacity: [0, 0.4, 0],
-            }}
-            transition={{
-              duration: Math.random() * 20 + 15,
-              repeat: Infinity,
-              repeatType: "reverse",
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
+        {isMounted && [...Array(20)].map((_, i) => {
+          // Only render particles when component is mounted (client-side)
+          const width = Math.random() * 50 + 10;
+          const height = Math.random() * 50 + 10;
+          const randomX = Math.random() * (windowSize.width || 1000); // Fallback value
+          const randomY = Math.random() * (windowSize.height || 800); // Fallback value
+          
+          return (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-gradient-to-br from-indigo-300/20 to-purple-300/20 dark:from-indigo-400/20 dark:to-purple-400/20 blur-sm"
+              style={{
+                width: width,
+                height: height,
+                filter: "blur(2px)",
+              }}
+              initial={{
+                x: randomX,
+                y: randomY,
+                scale: Math.random() * 0.5 + 0.5,
+                opacity: 0,
+              }}
+              animate={{
+                x: [null, Math.random() * (windowSize.width || 1000)],
+                y: [null, Math.random() * (windowSize.height || 800)],
+                opacity: [0, 0.4, 0],
+              }}
+              transition={{
+                duration: Math.random() * 20 + 15,
+                repeat: Infinity,
+                repeatType: "reverse",
+                delay: Math.random() * 5,
+              }}
+            />
+          );
+        })}
       </div>
 
       {/* Main container */}
