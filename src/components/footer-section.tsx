@@ -32,7 +32,7 @@ export default function FooterSection() {
             </motion.a>
             
             <motion.a
-              href="https://linkedin.com/in/SakshiGhanekar"
+              href="https://www.linkedin.com/in/sakshi-ghanekar-8255bb248/"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ y: -3 }}
