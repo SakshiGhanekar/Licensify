@@ -59,7 +59,7 @@ export default function FooterSection() {
             viewport={{ once: true }}
           >
             <p className="text-lg font-light mb-2">
-              &copy; {new Date().getFullYear()} License Resale Platform. All rights reserved.
+              &copy; {new Date().getFullYear()} Licensify. All rights reserved.
             </p>
             <p className="text-sm text-purple-700/80 dark:text-purple-300/80">
               Developed by <span className="font-medium text-purple-800 dark:text-purple-200">Sakshi Ghanekar</span> - Full Stack Developer
