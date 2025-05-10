@@ -1,6 +1,6 @@
-# Enterprise License Marketplace - Frontend
+# Licensify - License Marketplace
 
-![alt text](image.png)
+![alt text](public/image.png)
 
 A modern, animated frontend for an enterprise license marketplace platform built with React and Next.js.
 
