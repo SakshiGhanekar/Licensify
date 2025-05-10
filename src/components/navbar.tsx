@@ -6,6 +6,8 @@ import Link from "next/link"
 import { FiMenu, FiX, FiMoon, FiSun, FiArrowRight } from "react-icons/fi"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
+import { GrLicense } from "react-icons/gr";
+
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -35,6 +37,7 @@ export default function Navbar() {
     { name: "How It Works", href: "#how-it-works" },
     { name: "Why Choose Us", href: "#why-choose-us" },
     { name: "Testimonials", href: "#testimonials" },
+    { name: "Contact Us", href: "#contact-us" },
   ]
 
   return (
@@ -52,7 +55,10 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400"
             >
-              Licensify
+              <div className="flex gap-2">
+                <span className="text-white text-2xl"><GrLicense/></span>
+              <span>Licensify</span>
+              </div>
             </motion.div>
           </Link>
 
@@ -63,7 +69,7 @@ export default function Navbar() {
                 <li key={link.name}>
                   <Link href={link.href}>
                     <motion.div
-                      className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium px-3 py-2 rounded-lg transition-colors"
+                      className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium px-3 py-2 rounded-lg transition-colors pointer-cursor"
                       whileHover={{ y: -2 }}
                     >
                       {link.name}

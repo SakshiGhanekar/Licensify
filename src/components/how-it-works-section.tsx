@@ -67,7 +67,7 @@ export default function HowItWorksSection() {
   }
 
   return (
-    <section className="relative py-24 bg-gradient-to-b from-white to-indigo-50 dark:from-gray-900 dark:to-indigo-950/50 overflow-hidden transition-colors duration-500">
+    <section id="how-it-works" className="relative py-24 bg-gradient-to-b from-white to-indigo-50 dark:from-gray-900 dark:to-indigo-950/50 overflow-hidden transition-colors duration-500">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden opacity-10 dark:opacity-15">
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 to-purple-500/5 dark:from-indigo-500/10 dark:to-purple-500/10"></div>
