@@ -12,7 +12,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "License Resale Platform",
+  title: "Licensify",
   description: "Sell your unused software licenses instantly",
 };
 
