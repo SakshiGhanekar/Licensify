@@ -205,7 +205,7 @@ export default function HeroSection() {
   ]
 
   return (
-    <section className="relative h-screen flex items-center bg-gradient-to-br from-indigo-100 via-violet-50 to-purple-100 dark:from-indigo-950 dark:via-violet-900 dark:to-purple-950 text-gray-900 dark:text-white transition-colors duration-500 overflow-hidden">
+    <section className="top-18 md:top-0 relative h-screen flex items-center bg-gradient-to-br from-indigo-100 via-violet-50 to-purple-100 dark:from-indigo-950 dark:via-violet-900 dark:to-purple-950 text-gray-900 dark:text-white transition-colors duration-500 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 dark:from-indigo-500/10 dark:to-purple-500/10">
         <motion.div
@@ -369,7 +369,7 @@ export default function HeroSection() {
         </motion.div>
 
         {/* License Cards */}
-        <div className="w-full md:w-1/2 relative h-64 md:h-80 flex items-center justify-center">
+        <div className="mb-[200px] md:mb-0 w-full md:w-1/2 relative h-64 md:h-80 flex items-center justify-center mx-auto">
           {cards.map((card, index) => (
             <motion.div
               key={card.id}

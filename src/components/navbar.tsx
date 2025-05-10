@@ -52,7 +52,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400"
             >
-              LicenseResale
+              Licensify
             </motion.div>
           </Link>
 
@@ -141,7 +141,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden"
+            className="md:hidden overflow-hidden bg-[#eef2ff] dark:bg-indigo-950"
           >
             <div className="container mx-auto px-6 pb-6">
               <ul className="flex flex-col gap-2">
