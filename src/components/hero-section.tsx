@@ -275,7 +275,7 @@ export default function HeroSection() {
 
             <motion.h1
               variants={itemVariants}
-              className="text-4xl md:text-5xl font-bold mb-4 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-300 dark:to-purple-300"
+              className="mt-[150px] text-4xl md:text-5xl font-bold mb-4 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-300 dark:to-purple-300"
             >
               Turn Unused Software <br className="hidden md:block" /> Into{" "}
               <span className="text-emerald-500 dark:text-emerald-400 relative">
